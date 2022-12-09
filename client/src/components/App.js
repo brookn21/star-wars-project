@@ -13,12 +13,38 @@ function App() {
 
   const [page, setPage] = useState("home")
 
+  function addData (event, newData) {
+    event.preventDefault()
+
+    const baseUrl = "http://localhost:4000/"
+    const accountUrl = baseUrl + "account/"
+
+    let postRequest = {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        "data":newData
+      })
+    }
+    fetch(namesUrl, postRequest)
+    .then( r => r.json())
+    .then( response => {
+      setData(newName)
+      setShowHatch(false)
+    })
+  }
+
   function CurrentPage(currentPage) {
     if (currentPage == "home") {
       return <HomePage />;
     }
     else if (currentPage == "account"){
-      return <AccountPage />;
+      return <AccountPage
+      addData = {addData}
+      />
     }
   }
 

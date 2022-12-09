@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 
 function AccountPage(props){
+    const [data, setData] = useState("")
+
     return (
     <div className="account-form clear white">
         <h3>Your Info:</h3>
-        <form>
+        <form onSubmit={(event) => props.addData (event, data)}>
             <input type="radio" id="darkside" name="fav_language" value="DARK SIDE"/>
             <label for="html">DARK SIDE</label><br/>
             <input type="radio" id="lightside" name="fav_language" value="LIGHT SIDE"/>
@@ -21,7 +23,7 @@ function AccountPage(props){
         <input type="text" required="false" label="Gender" class-name="form-control" name="text-1670592935705" access="false" subtype="text"/><br/>
         Homeworld<br/>
         <input type="text" required="false" label="Homeworld" class-name="form-control" name="text-1670592992304" access="false" subtype="text"/><br/>
-        <button>Submit / Update</button>
+        <button type="submit">Submit / Update</button>
         </form>
     </div>
     )
