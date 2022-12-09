@@ -2,6 +2,7 @@ import React from "react";
 import PeopleHolder from "./PeopleHolder";
 import PeopleCard from "./PeopleCard";
 import NavBar from "./NavBar";
+import AccountPage from "./AccountPage";
 
 function HomePage(){
     const person1 = {
@@ -24,7 +25,7 @@ function HomePage(){
         hairColor: "n/a",
         skinColor: "gold",
         eyeColor: "yellow",
-        birthYear:"112BBY" ,
+        birthYear:"112BBY",
         gender: "male",
         homeworld: "Earth"
     }
@@ -34,11 +35,7 @@ function HomePage(){
     const randomPerson = ppl[Math.floor(Math.random() * ppl.length)]
 
     return(
-        <div className="main-container">
-            < NavBar />
-            {/* <PeopleHolder ppl = { ppl }/> */}
-            < PeopleCard randomPerson = {randomPerson}/>
-        </div>
+        < PeopleCard randomPerson = {randomPerson}/>
     )
 }
 
