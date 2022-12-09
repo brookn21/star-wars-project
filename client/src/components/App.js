@@ -26,7 +26,7 @@ function App() {
 <>
 
   <div className="App">
-    <div className="main-container">
+    <div className="main-container float-left">
       <NavBar setPage={setPage}/>
       {isShown ? (<>
           <button onClick={handleClick} className="primary">MY ACCOUNT</button>
