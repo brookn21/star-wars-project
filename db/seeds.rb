@@ -1,53 +1,38 @@
-require "swapi"
+require "faker"
 require 'open-uri'
-
 puts "Seeding..."
-module Swapi
-  class << self
-    BASE_URL = 'http://swapi.co/api'
-    PLANETS = 'planets'
-    PEOPLE = 'people'
-    STARSHIPS = 'starships'
-    VEHICLES = 'vehicles'
-    SPECIES = 'species'
-    FILMS = 'films'
 
-    def get_all(type)
-      get type
-     end
+User.create (
+name: "Princess Leia"
+email: "leia@gmail.com",
+password: "Princ3ss!",
+height: Faker::Number.number(digits: 1)"feet" Faker::Number.number(digits: 1)"inches",
+mass: Faker::Number.number(digits: 10)"kgs",
+birth_year: Faker::Number.number(digits: 4),
+gender: "Female",
+homeworld: Faker::Movies::StarWars.planet
+),
 
-    def get_planet(planet_id)
-      get PLANETS, planet_id
-    end
+User.create (
+  name: "C3P0"
+  email: "c3p0@gmail.com",
+  password: "Brobot420!",
+  height: Faker::Number.number(digits: 1)"feet" Faker::Number.number(digits: 1)"inches",
+  mass: Faker::Number.number(digits: 10)"kgs",
+  birth_year: Faker::Number.number(digits: 4),
+  gender: "N/A",
+  homeworld: Faker::Movies::StarWars.planet
+  ),
 
-    def get_person(people_id)
-      get PEOPLE, people_id
-    end
+(30).times do User.create (
+ name: Faker::Movies::StarWars.character,
+ email: Faker::Movies::StarWars.vehicle"@gmail.com",
+ password: Faker::Alphanumeric.alpha(number: 10),
+ height: Faker::Number.number(digits: 1)"feet" Faker::Number.number(digits: 1)"inches",
+ mass: Faker::Number.number(digits: 10)"kgs",
+ birth_year: Faker::Number.number(digits: 4),
+ gender: Faker::Gender.binary_type,
+ homeworld: Faker::Movies::StarWars.planet
+)
 
-    def get_starship(starship_id)
-      get STARSHIPS, starship_id
-    end
-
-    def get_vehicle(vehicle_id)
-      get VEHICLES, vehicle_id
-    end
-
-    def get_species(species_id)
-      get SPECIES, species_id
-    end
-
-    def get_film(film_id)
-      get FILMS, film_id
-    end
-
-    private
-
-    def get(type, id = '')
-      response = execute_request("#{type}/#{id}")
-    end
-
-    def execute_request(uri)
-      response = open("#{BASE_URL}/#{uri}", "User-Agent" => "swapi-ruby").read
-    end
-  end
-end
+puts "Done seeding!"
