@@ -1,9 +1,16 @@
-require "swapi"
+require "faker"
 require 'open-uri'
 
-
-# Will print a JSON response with Luke Skywalker information
-luke = Swapi.get_person 1
-
-# Will print a JSON response with Tatooine specs
-tatooine = Swapi.get_planet 1
+user1 = User.create (
+ name: Faker::Movies::StarWars.character,
+ email:
+ password:
+ height:
+ mass:
+ hair_color:
+ skin_color:
+ eye_color: "GRN"
+ birth_year: "199X"
+ gender:
+ homeworld:
+)
